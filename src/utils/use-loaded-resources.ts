@@ -3,7 +3,7 @@ import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import React from "react";
 
-export function useLoadedAssets() {
+export const useLoadedAssets = () => {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
   // Load any resources or data that we need prior to rendering the app
@@ -27,4 +27,4 @@ export function useLoadedAssets() {
   }, []);
 
   return isLoadingComplete;
-}
+};
