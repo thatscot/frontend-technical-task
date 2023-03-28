@@ -7,6 +7,7 @@
     "module": "commonjs",
     "types": ["node"],
     "typeRoots": ["./node_modules/@types"],
-    "plugins": []
+    "plugins": [],
+    "esModuleInterop": true
   }
 }
