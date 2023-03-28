@@ -1,23 +1,9 @@
-import { View, Image, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import { useDogContext } from "../utils/DogContext";
 import React, { useState } from "react";
 import { ImageContainer } from "./ImageContainer";
 import { ButtonsRow } from "./ButtonsRow";
 import { BottomSheet } from "./BottomSheet";
-type Dog = {
-  name: string;
-  url: string;
-};
-
-export const DogScroller = () => {
-  const { dogs } = useDogContext();
-
-  return (
-    <View>
-      <Carousel dogs={dogs} />
-    </View>
-  );
-};
 
 const stylesheet = StyleSheet.create({
   dogScrollerPage: {
@@ -42,7 +28,9 @@ const stylesheet = StyleSheet.create({
   },
 });
 
-const Carousel = ({ dogs }: { dogs: Array<Dog> }) => {
+export const DogScroller = () => {
+  const { dogs } = useDogContext();
+
   const [imageIndex, setImageIndex] = useState(dogs.length === 1 ? 0 : 1);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { removeDog } = useDogContext();
@@ -95,8 +83,6 @@ const Carousel = ({ dogs }: { dogs: Array<Dog> }) => {
             buttonTwoProps={{
               title: "Next",
               onPress: () => {
-                console.log(dogs.length);
-                console.log(imageIndex);
                 if (imageIndex !== dogs.length - 1) {
                   setImageIndex((prevState) => prevState + 1);
                 }

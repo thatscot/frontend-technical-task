@@ -1,13 +1,6 @@
 import React, { useMemo } from "react";
-import { View, Text, StyleSheet, Button, Dimensions } from "react-native";
-import Animated, {
-  withSpring,
-  useAnimatedStyle,
-  useSharedValue,
-  FadeInUp,
-  Layout,
-  FadeInDown,
-} from "react-native-reanimated";
+import { Text, StyleSheet, Button, Dimensions } from "react-native";
+import Animated, { Layout, FadeInDown } from "react-native-reanimated";
 
 const BottomSheet = ({
   onPressDelete,

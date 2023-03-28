@@ -1,5 +1,5 @@
-import { Text, Image, View, StyleSheet, Button } from "react-native";
-import React, { useEffect, useState, Suspense, useContext } from "react";
+import { Text, View, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import { useDogContext } from "../utils/DogContext";
 import { ImageContainer } from "./ImageContainer";
@@ -30,7 +30,6 @@ const fetchDog = async (callback: Function) => {
   const responseData = await response.json();
 
   if (responseData.message) {
-    console.log(responseData);
     callback(responseData.message);
   }
 };
