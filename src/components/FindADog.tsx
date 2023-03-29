@@ -64,22 +64,24 @@ export const FindADog = () => {
             style={styles.input}
           />
           <ButtonsRow
-            buttonOneProps={{
-              title: "Fetch Dog",
-              onPress: () => {
-                fetchDog(setImgURL);
-              },
-            }}
-            buttonTwoProps={{
-              title: "Submit Dog",
-              onPress: () => {
-                if (imgURL && dogName) {
-                  addDog({ url: imgURL, name: dogName });
-                  setDogName("");
+            buttonProps={[
+              {
+                title: "Fetch Dog",
+                onPress: () => {
                   fetchDog(setImgURL);
-                }
+                },
               },
-            }}
+              {
+                title: "Submit Dog",
+                onPress: () => {
+                  if (imgURL && dogName) {
+                    addDog({ url: imgURL, name: dogName });
+                    setDogName("");
+                    fetchDog(setImgURL);
+                  }
+                },
+              },
+            ]}
           />
         </View>
       )}

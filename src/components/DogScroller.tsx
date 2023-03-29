@@ -29,12 +29,10 @@ const stylesheet = StyleSheet.create({
 });
 
 export const DogScroller = () => {
-  const { dogs } = useDogContext();
+  const { dogs, removeDog } = useDogContext();
 
   const [imageIndex, setImageIndex] = useState(dogs.length === 1 ? 0 : 1);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const { removeDog } = useDogContext();
-
   const imageOne = dogs[imageIndex - 1] ? dogs[imageIndex - 1].url : "";
   const imageTwo = dogs[imageIndex] ? dogs[imageIndex].url : "";
   const imageThree = dogs[imageIndex + 1] ? dogs[imageIndex + 1].url : "";
@@ -72,22 +70,24 @@ export const DogScroller = () => {
             )}
           </View>
           <ButtonsRow
-            buttonOneProps={{
-              title: "Previous",
-              onPress: () => {
-                if (imageIndex > 0) {
-                  setImageIndex((prevState) => prevState - 1);
-                }
+            buttonProps={[
+              {
+                title: "Previous",
+                onPress: () => {
+                  if (imageIndex > 0) {
+                    setImageIndex((prevState) => prevState - 1);
+                  }
+                },
               },
-            }}
-            buttonTwoProps={{
-              title: "Next",
-              onPress: () => {
-                if (imageIndex !== dogs.length - 1) {
-                  setImageIndex((prevState) => prevState + 1);
-                }
+              {
+                title: "Next",
+                onPress: () => {
+                  if (imageIndex !== dogs.length - 1) {
+                    setImageIndex((prevState) => prevState + 1);
+                  }
+                },
               },
-            }}
+            ]}
           />
           <Button
             color={"#142538"}

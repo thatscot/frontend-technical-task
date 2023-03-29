@@ -1,17 +1,17 @@
 import React, { createContext, useState, useContext } from "react";
 
-type Dog = {
+interface Dog {
   name: string;
   url: string;
-};
+}
 
-type DogContextType = {
+interface DogContext {
   dogs: Array<Dog>;
   addDog: Function;
   removeDog: Function;
-};
+}
 
-const DogContext = createContext<DogContextType>({
+const DogContext = createContext<DogContext>({
   dogs: [],
   addDog: (dog: Dog) => {},
   removeDog: (index: number) => {},

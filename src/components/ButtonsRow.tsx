@@ -1,9 +1,9 @@
 import { StyleSheet, Button, View } from "react-native";
 import React from "react";
-type ButtonProps = {
+interface ButtonProps {
   onPress: Function;
   title: string;
-};
+}
 
 const styles = StyleSheet.create({
   component: {
@@ -27,29 +27,23 @@ const styles = StyleSheet.create({
 });
 
 export const ButtonsRow = ({
-  buttonOneProps,
-  buttonTwoProps,
+  buttonProps,
 }: {
-  buttonOneProps: ButtonProps;
-  buttonTwoProps: ButtonProps;
+  buttonProps: Array<ButtonProps>;
 }) => {
   return (
     <View style={styles.buttonsContainer}>
-      <View style={styles.buttonWrapper}>
-        <Button
-          color={"#142538"}
-          onPress={() => buttonOneProps.onPress()}
-          title={buttonOneProps.title}
-        />
-      </View>
-
-      <View style={styles.buttonWrapper}>
-        <Button
-          color={"#142538"}
-          onPress={() => buttonTwoProps.onPress()}
-          title={buttonTwoProps.title}
-        />
-      </View>
+      {buttonProps.map((button) => {
+        return (
+          <View style={styles.buttonWrapper}>
+            <Button
+              color={"#142538"}
+              onPress={() => button.onPress()}
+              title={button.title}
+            />
+          </View>
+        );
+      })}
     </View>
   );
 };
